@@ -1,10 +1,7 @@
 import { StormGlass } from '@src/clients/stormGlass';
 import { Beach, BeachPosition } from '@src/models/beach';
 import stormGlassNormalizedResposeFixture from '@test/fixtures/stormglass_normalized_response_3_hours.json';
-import {
-  Forecast,
-  ForecastProcessingInternalError,
-} from '../forecast';
+import { Forecast, ForecastProcessingInternalError } from '../forecast';
 
 jest.mock('@src/clients/stormGlass');
 
