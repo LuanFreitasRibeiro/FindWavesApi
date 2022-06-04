@@ -1,4 +1,8 @@
-import { addHttpVerbToMethodMetadata, Controller, Post } from '@overnightjs/core';
+import {
+  addHttpVerbToMethodMetadata,
+  Controller,
+  Post,
+} from '@overnightjs/core';
 import { User } from '@src/models/user';
 import AuthService from '@src/services/auth';
 import { Request, Response } from 'express';
@@ -21,21 +25,21 @@ export class UsersController extends BaseController {
   public async authenticate(req: Request, res: Response): Promise<Response> {
     const { email, password } = req.body;
     const user = await User.findOne({ email: email });
-    if(!user){
+    if (!user) {
       return res.status(401).send({
         code: 401,
         error: 'User not found',
       });
     }
 
-    if(!(await AuthService.comparePasswords(password, user.password))){
+    if (!(await AuthService.comparePasswords(password, user.password))) {
       return res.status(401).send({
         code: 401,
         error: 'Password does not match',
       });
     }
 
-    const token = AuthService.generateToken(user.toJSON())
+    const token = AuthService.generateToken(user.toJSON());
 
     return res.status(200).send({ token: token });
   }

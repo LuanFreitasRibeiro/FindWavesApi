@@ -76,10 +76,10 @@ describe('Users functional testes', () => {
       );
     });
 
-    it('Should return UNAUTHORIZED if the user the given email is not found', async() => {
+    it('Should return UNAUTHORIZED if the user the given email is not found', async () => {
       const response = await global.testRequest
         .post('/users/authenticate')
-        .send({ email: 'some-email@mail.com', password: '1234'})
+        .send({ email: 'some-email@mail.com', password: '1234' });
 
       expect(response.status).toBe(401);
     });
